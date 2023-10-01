@@ -4,11 +4,12 @@ import os
 import argparse  # For command-line arguments
 
 # Specify the directory containing the JSONL files
-data_directory = r'C:\Users\joseph\Downloads\Compressed\1.1\data'
+data_directory = r'C:\Users\Lenovo P15s\PycharmProjects\amazon_massive_dataset\data'
 
 # Specify the output directory for Excel files
-output_dir = r'C:\Users\joseph\PycharmProjects\pythonProject3\output_excel_files'
+output_dir = r'/output_excel_files'
 os.makedirs(output_dir, exist_ok=True)
+
 
 def process_jsonl_file(file_path, keyword, filter_field):
     # Extract language code from the filename
@@ -48,6 +49,7 @@ def process_jsonl_file(file_path, keyword, filter_field):
             print(f"Error Details: {str(e)}")
     else:
         print(f"No records found in JSONL file matching '{keyword}' in field '{filter_field}': {file_path}")
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Process JSONL files and generate Excel files based on keyword and field.")

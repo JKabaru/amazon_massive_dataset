@@ -79,3 +79,15 @@ To configure the project for your specific environment, you may need to make the
    ```shell
    python script_name.py --keyword your_keyword --field your_field
    ```
+ ### Folder structure
+
+Here's a folder structure for the project:
+
+```
+my-project/     # Root directory.
+|- data/        # Folder used to store the massive dataset .
+|- src/          # source codes.
+|- output_excel_files/       # excel files folder.
+|- partitions _ttd/  # folder used to store the parttitions jsonl.
+|- output      # contains the combined json.
+```

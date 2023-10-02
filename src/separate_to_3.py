@@ -1,9 +1,10 @@
-import json
+
 import os
 import pandas as pd
 
 # Specify the source directory for the JSONL data
-source_directory = r'C:\Users\joseph\Downloads\Compressed\1.1\data'
+base_directory = os.path.dirname(os.path.abspath(__file__))
+source_directory = os.path.join(base_directory, '..', 'data')
 
 # Step 1: Load and Prepare the Dataset using pandas
 source_files = [os.path.join(source_directory, filename) for filename in os.listdir(source_directory) if filename.endswith('.jsonl')]
@@ -28,7 +29,7 @@ for source_file in source_files:
     partition_ratios = {'test': 0.1, 'train': 0.7, 'dev': 0.2}
 
     # Step 3: Write Data to JSONL Files using pandas
-    output_directory = r'C:\Users\joseph\PycharmProjects\pythonProject3\partitions_ttd'
+    output_directory = r'C:\Users\Lenovo P15s\PycharmProjects\amazon_massive_dataset\partitions_ttd'
     os.makedirs(output_directory, exist_ok=True)
 
     for lang, lang_df in languages.items():
@@ -41,7 +42,8 @@ for source_file in source_files:
             partitioned_data[partition] = lang_df.iloc[start_idx:end_idx]
 
         for partition, data_df in partitioned_data.items():
-            output_file = os.path.join(output_directory, f'{os.path.splitext(os.path.basename(source_file))[0]}_{lang}_{partition}.jsonl')
+            output_file = os.path.join(output_directory,
+                                       f'{os.path.splitext(os.path.basename(source_file))[0]}_{lang}_{partition}.jsonl')
             data_df.to_json(output_file, orient='records', lines=True, force_ascii=False)
 
 print('JSONL files generated successfully.')

@@ -38,17 +38,23 @@ Dependecies that are **Pre-installed** in Python include:
 
 ## Getting Started
 
-Clone the repository to get started:
+1. Clone the repository to get started:
 
 ```bash
 git clone https://github.com/your-username/your-project.git
 cd your-project
 
 ```
-
-## Usage
-
-Describe how to use your project here. Provide examples and usage instructions.
+2. Navigate to the repository
+   Use the cd command to navigate to the directory where the repository was cloned.
+   ```bash
+   cd repository
+   ```
+3. Install Dependencies:
+   If the code relies on external Python packages that are not part of the standard library, you may need to install them. Typically, you can find the dependencies listed in a requirements.txt file or similar. Use a tool like pip to install them:
+```bash
+pip install -r requirements.txt
+```
 
 ## Configuration
 

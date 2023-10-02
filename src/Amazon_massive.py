@@ -4,11 +4,14 @@ import os
 import argparse  # For command-line arguments
 
 # Specify the directory containing the JSONL files
-data_directory = r'C:\Users\joseph\Downloads\Compressed\1.1\data'
+base_directory = os.path.dirname(os.path.abspath(__file__))
+data_directory = os.path.join(base_directory, '..', 'data')
+
 
 # Specify the output directory for Excel files
-output_dir = r'C:\Users\joseph\PycharmProjects\pythonProject3\output_excel_files'
+output_dir = os.path.join(base_directory, '..', 'output_excel_files')
 os.makedirs(output_dir, exist_ok=True)
+
 
 def process_jsonl_file(file_path, keyword, filter_field):
     # Extract language code from the filename
@@ -26,6 +29,7 @@ def process_jsonl_file(file_path, keyword, filter_field):
             data = [json.loads(line) for line in file]
     except FileNotFoundError as e:
         print(f"Error: JSONL file not found: {file_path}")
+        print(f"Error Details: {str(e)}")
         return
     except Exception as e:
         print(f"Error: Failed to read JSONL file: {file_path}")
@@ -49,8 +53,11 @@ def process_jsonl_file(file_path, keyword, filter_field):
     else:
         print(f"No records found in JSONL file matching '{keyword}' in field '{filter_field}': {file_path}")
 
+
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description="Process JSONL files and generate Excel files based on keyword and field.")
+    parser = argparse.ArgumentParser(
+        description="Process JSONL files and generate Excel files based on keyword and field."
+    )
     parser.add_argument("--keyword", type=str, help="Specify the keyword to filter (e.g., 'english').")
     parser.add_argument("--field", type=str, help="Specify the field for filtering (e.g., 'utt').")
 
@@ -60,7 +67,7 @@ if __name__ == "__main__":
         # Process all JSONL files in the data directory
         for filename in os.listdir(data_directory):
             if filename.endswith('.jsonl'):
-                file_path = os.path.join(data_directory, filename)
-                process_jsonl_file(file_path, args.keyword, args.field)
+                jsonl_file_path = os.path.join(data_directory, filename)
+                process_jsonl_file(jsonl_file_path, args.keyword, args.field)
     else:
         print("Error: Both --keyword and --field arguments are required.")

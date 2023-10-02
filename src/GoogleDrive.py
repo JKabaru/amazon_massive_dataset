@@ -18,7 +18,7 @@ credentials = service_account.Credentials.from_service_account_file('computergra
 
 drive_service = build('drive', 'v3', credentials=credentials)
 
-project_folder_path = 'C:/Users/User/PycharmProjects/CGCAT1'
+project_folder_path = os.path.dirname(os.path.abspath(_file_))
 
 def upload_file(file_path, parent_folder_id):
     filename = os.path.basename(file_path)

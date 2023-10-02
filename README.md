@@ -26,6 +26,10 @@ Ensure you have the following dependencies installed:
 - openpyxl: Used to read and write Excel files. You can install it using the command
   ```bash
   pip install openpyxl
+  ```
+- Google API:  For cloud storage. You can use the following command to intsall the library:
+  ```bash
+  pip install google-cloud-storage
 
 Dependecies that are **Pre-installed** in Python include:
 - Tarfile: a standard library module in Python that provides the ability to read and create tar archives, it is also used in Unix and Linux systems to bundle files together into a single archive i.e **Amazon massive data file**
@@ -79,6 +83,9 @@ To configure the project for your specific environment, you may need to make the
    ```shell
    python script_name.py --keyword your_keyword --field your_field
    ```
+5. **Google API- Cloud storage**: Click on the following link to create a servive account to generate a key json file that you will import into your project so as to enable the upload of your files to a Google cloud drive
+   https://console.cloud.google.com/welcome?project=computergraphicsgrp5&supportedpurview=project 
+
  ### Folder structure
 
 Here's a folder structure for the project:
